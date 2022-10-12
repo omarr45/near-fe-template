@@ -22,8 +22,6 @@ function App({ contract, currentUser, wallet }) {
     window.location.replace(window.location.origin + window.location.pathname);
   };
 
-  console.log(currentUser);
-
   return (
     <HashRouter>
       <Flowbite>
