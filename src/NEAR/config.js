@@ -1,4 +1,4 @@
-const CONTRACT_NAME = 'contract.shahraqari.testnet';
+const CONTRACT_NAME = 'abcdefg.testnet';
 
 function environment(env) {
   switch (env) {
