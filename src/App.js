@@ -1,24 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { HashRouter, Route, Routes } from 'react-router-dom';
+
+import { Flowbite } from 'flowbite-react';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Redirect from './pages/Redirect';
+
+window.Buffer = window.Buffer || require('buffer').Buffer;
+
+function App({ contract, currentUser, wallet }) {
+  const signIn = () => {
+    wallet.requestSignIn({
+      contractId: 'abcdefg.testnet',
+      successUrl: window.location.origin + '/#/redirect',
+    });
+  };
+
+  const signOut = () => {
+    wallet.signOut();
+    window.location.replace(window.location.origin + window.location.pathname);
+  };
+
+  console.log(currentUser);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Flowbite>
+        <div className='min-h-screen dark:bg-gray-900 text-black dark:text-white font-bold'>
+          <Navbar login={signIn} logout={signOut} acc={currentUser} />
+          <Routes>
+            <Route
+              path='/'
+              exact
+              element={<Home login={signIn} acc={currentUser} />}
+            />
+            <Route path='/redirect' exact element={<Redirect />} />
+          </Routes>
+        </div>
+      </Flowbite>
+    </HashRouter>
   );
 }
 
