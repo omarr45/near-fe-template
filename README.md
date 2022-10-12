@@ -13,26 +13,32 @@
 
 ### `NEAR/config.js` :
 
-1. change contract name - line 1
+1. Change contract name - line 1
 
 ### `src/index.js` :
 
-1. choose environment (testnet/mainnet) - line 14
-2. add contract's functions (view & change) - lines 42,44
+1. Choose environment (testnet / mainnet) - line 14
+2. Add contract's functions (view & change) - lines 42,44
 
 ### `src/App.js` :
 
-1. change contract name at sign in method - line 14
+1. Change contract name at sign in method - line 14
+
+### `public/index.html` :
+
+1. Change `<title>` tag - line 27
+2. Change description - line 10
+3. Change favicon.ico, logo192.png, and logo512.png
 
 <hr/>
 
 ## Functions calling:
 
-- pass the `contract` to any component, and then call `contract.myFunction()`
+- Pass the `contract` to any component, and then call `contract.myFunction()`
 
-- if it has any parameters, then `contract.myFunction({ arg1 : 'a', arg2 : 'b' })`
+- If it has any parameters, then `contract.myFunction({ arg1 : 'a', arg2 : 'b' })`
 
-- to get the hash of any transaction:
+- To get the hash of any transaction:
 
 ```js
 // pass wallet to the component from App.js
